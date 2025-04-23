@@ -15,9 +15,9 @@
     --size-type-xlarge: 2rem;
     --size-type-xxlarge: 2.5rem;
   
-    --color-accent: rgb(39,81,39);
+    --color-accent: rgb(237,115,0);
     --color-background-header: var(--color-accent);
-    --color-background-page: rgb(174 213 174);
+    --color-background-page: rgb(255 229 204);
     --color-link-inverted: rgb(255 208 0);
     --color-link: var(--color-accent);
     --color-text: rgb(51 51 51);
