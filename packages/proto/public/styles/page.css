@@ -173,3 +173,29 @@ svg.icon {
   position: relative;
   z-index: 1;
 }
+
+.overlay-box {
+  position: absolute;
+  top: 10%; /* Adjust position for the first box */
+  right: 10%;
+  padding: 20px;
+  max-width: 500px; /* Control the box size */
+  z-index: 1; /* Make sure it's above the image */
+  
+}
+
+.overlay-box:nth-child(2) {
+  top: 30%; /* Adjust position for the second box */
+  right: 10%;
+  background-color: rgba(237, 115, 0);
+  width: 500px;
+  height: 300px;
+  border-radius: 8px;
+  font-family: var(--font-family-lexend);
+  font-weight: var(--font-weight-bold);
+}
+
+.overlay-box h2 {
+  color: #000000; /* New color for the text */
+  font-family: var(--font-family-poetsen);
+}
