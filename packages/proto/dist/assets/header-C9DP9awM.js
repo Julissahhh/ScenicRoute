@@ -223,10 +223,10 @@ Expecting `+mt.join(", ")+", got '"+(this.terminals_[b]||b)+"'":Nt="Parse error 
 
       header {
         display: flex;
-        align-items: center;
+        align-items: end;
         justify-content: space-between;
         width: 100%;
-        padding: var(--size-spacing-medium);
+        padding: var(--size-spacing-large);
         color: var(--color-text-inverted);
         box-sizing: border-box;
       }
@@ -263,5 +263,5 @@ Expecting `+mt.join(", ")+", got '"+(this.terminals_[b]||b)+"'":Nt="Parse error 
         font-weight: var(--font-weight-bold);
         font-family: var(--font-family-poetsen);
       }
-      /* ... rest of your styles ... */
+      
     `];let Z=se;ee([te({type:String})],Z.prototype,"title");ee([te({type:String})],Z.prototype,"subtitle");ee([te({type:Boolean})],Z.prototype,"darkMode");customElements.define("scenicroute-header",Z);export{Z as H,lr as d};
