@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Poetsen+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/styles/page.css" />
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="styles/reset.css" />
+</head>
+
+<body class="page">
+    <scenicroute-header
+        title="Scenic Route..."
+        subtitle="Find must-see locations on the way to your desired destination">
+    </scenicroute-header>
+  <article class="grid">
+    <main>
+      <section class="AboutTrip">
+        <div class="overlay-box">
+          <h2>Tell us about your trip!</h2>
+        </div>
+        <div class="overlay-box">
+          <p>What are you interested in?</p>
+        </div>
+      </section>
+      <section class="itinerary">
+        <h2>About your trip</h2>
+        <ul>
+          <li><a href="flight.html">
+              <img src="/icons/map-tag.svg" alt="pin icon" class="icon-left" />
+              Starting locations
+            </a></li>
+          <li><a href="destination.html">
+              <img src="/icons/map-tag.svg" alt="pin icon" class="icon-left" />
+              Ending locations</a></li>
+          <li>
+            <a href="interest.html">
+              <img src="/icons/heart-shine.svg" alt="pin icon" class="icon-left" />
+              Interest options</a>
+          </li>
+          <li>
+            <a href="budget.html">
+              <img src="/icons/money.svg" alt="pin icon" class="icon-left" />
+              Budgets available</a>
+          </li>
+          <li>
+            <a href="rail.html">
+              <img src="/icons/star.svg" alt="pin icon" class="icon-left" />
+              Highly rated locations</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="itinerary">
+        <h2>Whos going</h2>
+
+        <ul>
+          <li><a href="person.html">Julissa</a></li>
+          <li><a href="person.html">Jasmin</a></li>
+          <li><a href="person.html">Lizbeth</a></li>
+        </ul>
+      </section>
+    </main>
+  </article>
+  <script type="module">
+    import { define } from "@calpoly/mustang";
+    import { HeaderElement } from "/src/components/header.ts";
+  
+    define({
+      "scenicroute-header": HeaderElement
+    });
+    HeaderElement.initializeOnce();
+  </script>
+</body>
+
+</html>
