@@ -9,8 +9,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        sub: resolve(__dirname, 'interest.html'),
-        sub: resolve(__dirname, 'roadtripideas.html'),
+        sub1: resolve(__dirname, 'interest.html'),
+        sub2: resolve(__dirname, 'roadtripideas.html'),
 
       },
     },
