@@ -10,6 +10,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         sub: resolve(__dirname, 'interest.html'),
+        sub: resolve(__dirname, 'roadtripideas.html'),
+
       },
     },
   },
