@@ -11,7 +11,6 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         sub1: resolve(__dirname, 'interest.html'),
         sub2: resolve(__dirname, 'roadtripideas.html'),
-
       },
     },
   },

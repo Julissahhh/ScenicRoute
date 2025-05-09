@@ -308,4 +308,4 @@ Expecting `+mt.join(", ")+", got '"+(this.terminals_[b]||b)+"'":Nt="Parse error 
     .dark-mode-toggle input {
       cursor: pointer;
     }
-  `];let Z=se;ee([te({type:String})],Z.prototype,"title");ee([te({type:String})],Z.prototype,"subtitle");ee([te({type:Boolean})],Z.prototype,"darkMode");customElements.define("scenicroute-header",Z);export{Z as H,lr as d};
+  `];let Z=se;ee([te({type:String})],Z.prototype,"title");ee([te({type:String})],Z.prototype,"subtitle");ee([te({type:Boolean})],Z.prototype,"darkMode");customElements.define("scenicroute-header",Z);export{Z as H,cs as a,lr as d,nt as i,te as n,Bi as x};
