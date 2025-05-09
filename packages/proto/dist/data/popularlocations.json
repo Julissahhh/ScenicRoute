@@ -1,0 +1,20 @@
+[
+    {
+        "name" : "Yosemite National Park",
+        "image": "../images/Yosemite-National-Park.jpg",
+        "state": "California" ,
+        "type": "Nature"       
+    },
+    {
+        "name" : "Yellowstone National Park",
+        "image": "../images/yellowstone.jpg",
+        "state": "Wyoming" ,
+        "type": "Nature"       
+    },
+    {
+        "name" : "Grand Canyon",
+        "image": "../images/Grand-canyon.webp",
+        "state": "Arizona" ,
+        "type": "Nature"       
+    }
+]
