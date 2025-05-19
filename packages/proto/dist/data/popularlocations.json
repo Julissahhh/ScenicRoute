@@ -1,20 +1,23 @@
 [
     {
         "name" : "Yosemite National Park",
-        "image": "../images/Yosemite-National-Park.jpg",
+        "imageURL": "../images/Yosemite-National-Park.jpg",
         "state": "California" ,
-        "type": "Nature"       
+        "category": "Nature",
+        "address": ""    
     },
     {
         "name" : "Yellowstone National Park",
-        "image": "../images/yellowstone.jpg",
+        "imageURL": "../images/yellowstone.jpg",
         "state": "Wyoming" ,
-        "type": "Nature"       
+        "category": "Nature",
+        "address": ""       
     },
     {
         "name" : "Grand Canyon",
-        "image": "../images/Grand-canyon.webp",
+        "imageURL": "../images/Grand-canyon.webp",
         "state": "Arizona" ,
-        "type": "Nature"       
+        "category": "Nature",
+        "address": ""
     }
 ]

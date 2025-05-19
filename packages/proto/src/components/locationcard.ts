@@ -3,9 +3,9 @@ import { property, state } from "lit/decorators.js";
 
 interface Location {
     name: string;
-    image: string;
+    imageURL: string;
     state: string;
-    type: string;
+    category: string;
   }
 
 export class LocationCardElement extends LitElement {
@@ -37,10 +37,10 @@ export class LocationCardElement extends LitElement {
         ${this.locations.map(
           (location) => html`
             <div class="location-card">
-              <img src="${location.image}" alt="${location.name}" />
+              <img src="${location.imageURL}" alt="${location.name}" />
               <h2>${location.name}</h2>
               <p>${location.state}</p>
-              <p>${location.type}</p>
+              <p>${location.category}</p>
             </div>
           `
         )}
