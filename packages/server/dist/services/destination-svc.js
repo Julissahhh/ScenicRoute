@@ -47,4 +47,8 @@ function get(id) {
   });
 }
 ;
+function create(json) {
+  const t = new TravelerModel(json);
+  return t.save();
+}
 var destination_svc_default = { index, get };

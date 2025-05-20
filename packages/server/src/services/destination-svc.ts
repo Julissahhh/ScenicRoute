@@ -32,4 +32,29 @@ function get(id: String): Promise<Destination> {
   })
 };
 
-export default { index, get };
+function create(json: Destination): Promise<Destination> {
+  const t = new DestinationModel(json);
+  return t.save();
+}
+
+function update(
+  locationid: String,
+  destination: Destination
+): Promise<Destination> {
+  return DestinationModel.findOneAndUpdate({ locationid }, destination, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${locationid} not updated`;
+    else return updated as Destination;
+  });
+}
+
+function remove(locationid: String): Promise<void> {
+  return DestinationModel.findOneAndDelete({ locationid }).then(
+    (deleted) => {
+      if (!deleted) throw `${locationid} not deleted`;
+    }
+  );
+}
+
+export default { index, get, create, update, remove };
