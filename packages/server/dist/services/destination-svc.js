@@ -48,7 +48,22 @@ function get(id) {
 }
 ;
 function create(json) {
-  const t = new TravelerModel(json);
+  const t = new DestinationModel(json);
   return t.save();
 }
-var destination_svc_default = { index, get };
+function update(locationid, destination) {
+  return DestinationModel.findOneAndUpdate({ locationid }, destination, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${locationid} not updated`;
+    else return updated;
+  });
+}
+function remove(locationid) {
+  return DestinationModel.findOneAndDelete({ locationid }).then(
+    (deleted) => {
+      if (!deleted) throw `${locationid} not deleted`;
+    }
+  );
+}
+var destination_svc_default = { index, get, create, update, remove };

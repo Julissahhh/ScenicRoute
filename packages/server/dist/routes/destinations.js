@@ -41,4 +41,19 @@ router.get("/:locationid", (req, res) => {
   const { userid } = req.params;
   import_destination_svc.default.get(userid).then((destination) => res.json(destination)).catch((err) => res.status(404).send(err));
 });
+router.post("/", (req, res) => {
+  const newDestination = req.body;
+  import_destination_svc.default.create(newDestination).then(
+    (destination) => res.status(201).json(destination)
+  ).catch((err) => res.status(500).send(err));
+});
+router.put("/:userid", (req, res) => {
+  const { userid } = req.params;
+  const newDestination = req.body;
+  import_destination_svc.default.update(userid, newDestination).then((destination) => res.json(destination)).catch((err) => res.status(404).end());
+});
+router.delete("/:userid", (req, res) => {
+  const { userid } = req.params;
+  import_destination_svc.default.remove(userid).then(() => res.status(204).end()).catch((err) => res.status(404).send(err));
+});
 var destinations_default = router;

@@ -25,6 +25,7 @@ export class LocationCardElement extends LitElement {
       .then((res) => res.json())
       .then((json: Location[]) => {
         if (json) {
+          console.log("Fetched data:", json);
           this.locations = json; 
         }
       })

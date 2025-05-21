@@ -1,62 +1,30 @@
-import { html, css, LitElement } from 'lit';
-import { property } from 'lit/decorators.js';
-
-export class LocationInputElement extends LitElement {
-  @property({ type: Array }) locations: string[] = ['', '']; // Initialize with two empty strings
-  @property({ type: Number }) maxLocations: number = 10; // 2 permanent + 8 additional
-
-  handleAddInput() {
-    if (this.locations.length < this.maxLocations) {
-      this.locations = [...this.locations, ''];
-    }
-  }
-
-  handleRemoveInput(index: number) {
-      this.locations = this.locations.filter((_, i) => i !== index);
-  }
-
-  handleInputChange(e: Event, index: number) {
-    const input = (e.target as HTMLInputElement).value;
-    this.locations = [
-      ...this.locations.slice(0, index),
-      input,
-      ...this.locations.slice(index + 1)
-    ];
-  }
-
-  render() {
-    return html`
+import{i as u,x as s,a as f,n as d,d as g,b as m,H as p}from"./header-CbxHXgdm.js";var x=Object.defineProperty,h=(c,o,t,i)=>{for(var n=void 0,e=c.length-1,l;e>=0;e--)(l=c[e])&&(n=l(o,t,n)||n);return n&&x(o,t,n),n};const r=class r extends u{constructor(){super(...arguments),this.locations=["",""],this.maxLocations=10}handleAddInput(){this.locations.length<this.maxLocations&&(this.locations=[...this.locations,""])}handleRemoveInput(o){this.locations=this.locations.filter((t,i)=>i!==o)}handleInputChange(o,t){const i=o.target.value;this.locations=[...this.locations.slice(0,t),i,...this.locations.slice(t+1)]}render(){return s`
       <div class="locations-container">
-        ${this.locations.map(
-          (location, index) => html`
+        ${this.locations.map((o,t)=>s`
             <div class="input-container">
-              <span class="location-number">${index}.</span>
+              <span class="location-number">${t}.</span>
               <input
                 type="text"
-                .value="${location}"
-                @input="${(e: Event) => this.handleInputChange(e, index)}"
-                placeholder="${index === 0 ? 'Starting location' : 'Enter location'}"
-                ?disabled=${false}
+                .value="${o}"
+                @input="${i=>this.handleInputChange(i,t)}"
+                placeholder="${t===0?"Starting location":"Enter location"}"
+                ?disabled=${!1}
               />
                 <img
                   src="/icons/x.svg"
                   alt="close icon"
                   class="icon"
-                  @click="${() => this.handleRemoveInput(index)}"
+                  @click="${()=>this.handleRemoveInput(t)}"
                 />
             </div>
-          `
-        )}
-        ${this.locations.length < this.maxLocations ? html`
+          `)}
+        ${this.locations.length<this.maxLocations?s`
           <div class="button-container">
             <button class="add-location" @click="${this.handleAddInput}">Add Location</button>
-          ` : ''}
+          `:""}
           </div>
       </div>
-    `;
-  }
-
-  static styles = css`
+    `}};r.styles=f`
   .locations-container {
       padding: 5px;
       max-height: 250px; /* Adjust this value as needed */
@@ -133,5 +101,4 @@ export class LocationInputElement extends LitElement {
     background-color: #cccccc;
     cursor: not-allowed;
   }
-`;
-}
+`;let a=r;h([d({type:Array})],a.prototype,"locations");h([d({type:Number})],a.prototype,"maxLocations");g({"scenicroute-header":p,"mu-auth":m.Provider,"location-input":a});p.initializeOnce();

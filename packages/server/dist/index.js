@@ -25,6 +25,7 @@ var import_express = __toESM(require("express"));
 var import_mongo = require("./services/mongo");
 var import_destination_svc = __toESM(require("./services/destination-svc"));
 var import_destinations = __toESM(require("./routes/destinations"));
+var import_auth = __toESM(require("./routes/auth"));
 (0, import_mongo.connect)("scenic");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
@@ -32,6 +33,7 @@ const staticDir = process.env.STATIC || "public";
 app.use(import_express.default.static(staticDir));
 app.use(import_express.default.json());
 app.use("/api/destinations", import_destinations.default);
+app.use("/auth", import_auth.default);
 app.get("/destinations", async (req, res) => {
   try {
     const destinationsList = await import_destination_svc.default.index();

@@ -2,6 +2,7 @@ import { Events } from "@calpoly/mustang";
 import { css, html, LitElement } from "lit";
 import reset from "../styles/reset.css.ts";
 import { property, state } from "lit/decorators.js";
+import { Auth, Observer } from "@calpoly/mustang";
 
 function toggleDarkMode(ev: InputEvent) {
   const target = ev.target as HTMLInputElement;
@@ -15,6 +16,30 @@ export class HeaderElement extends LitElement {
   @property({ type: String }) subtitle = 'Find must-see locations on the way to your desired destination';
   @property({ type: Boolean }) darkMode = false;
   @state() private menuOpen = false;
+
+  _authObserver = new Observer<Auth.Model>(this, "scenic:auth");
+
+  @state()
+  loggedIn = false;
+
+  @state()
+  userid?: string;
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    this._authObserver.observe((auth: Auth.Model) => {
+      const { user } = auth;
+
+      if (user && user.authenticated ) {
+        this.loggedIn = true;
+        this.userid = user.username;
+      } else {
+        this.loggedIn = false;
+        this.userid = undefined;
+      }
+    });
+  }
 
   private toggleMenu(e: Event) {
     e.stopPropagation(); // Prevent immediate document click handler
@@ -64,7 +89,7 @@ export class HeaderElement extends LitElement {
         />
         <div class="dropdown-menu ${this.menuOpen ? 'open' : ''}">
           <a href="person.html" @click=${this.closeMenu}>Planned Trips</a>
-          <a href="person.html" @click=${this.closeMenu}>Log in/Sign Up</a>
+          <a href="login.html" @click=${this.closeMenu}>Log in/Sign Up</a>
           <div class="dropdown-dark-mode">
             <label>
               <input 
