@@ -1,7 +1,7 @@
+// in proto/src/auth/login-form.ts
 import { html, css, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
 import reset from "../styles/reset.css.js";
-// import headings from "../styles/headings.css.js";
 
 interface LoginFormData {
     username?: string;
@@ -26,36 +26,6 @@ export class LoginFormElement extends LitElement {
         return Boolean(this.api && this.formData.username &&
             this.formData.password);
     }
-
-    override render() {
-        return html`
-      <form
-        @change=${(e: InputEvent) => this.handleChange(e)}
-        @submit=${(e: SubmitEvent) => this.handleSubmit(e)}
-      >
-        <slot></slot>
-        <slot name="button">
-          <button
-            ?disabled=${!this.canSubmit}
-            type="submit">
-            Login
-          </button>
-        </slot>
-        <p class="error">${this.error}</p>
-      </form>
-    `;
-    }
-
-    static styles = [
-        reset.styles,
-        // headings.styles,
-        css`
-      .error:not(:empty) {
-        color: var(--color-error);
-        border: 1px solid var(--color-error);
-        padding: var(--size-spacing-medium);
-      }
-  `];
 
     handleChange(event: InputEvent) {
         const target = event.target as HTMLInputElement;
@@ -112,6 +82,35 @@ export class LoginFormElement extends LitElement {
                 });
         }
     }
+    
+    override render() {
+        return html`
+      <form
+        @change=${(e: InputEvent) => this.handleChange(e)}
+        @submit=${(e: SubmitEvent) => this.handleSubmit(e)}
+      >
+        <slot></slot>
+        <slot name="button">
+          <button
+            ?disabled=${!this.canSubmit}
+            type="submit">
+            Login
+          </button>
+        </slot>
+        <p class="error">${this.error}</p>
+      </form>
+    `;
+    }
+
+    static styles = [
+        reset.styles,
+        css`
+      .error:not(:empty) {
+        color: var(--color-error);
+        border: 1px solid var(--color-error);
+        padding: var(--size-spacing-medium);
+      }
+  `];
 
     // more to come...
 }
