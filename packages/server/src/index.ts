@@ -14,7 +14,7 @@ const staticDir = process.env.STATIC || "public";
 
 app.use(express.static(staticDir));
 app.use(express.json());
-app.use("/api/destinations",  destinations);
+app.use("/api/destinations", destinations);
 app.use("/auth", auth);
 
 app.get("/destinations", async (req: Request, res: Response) => {

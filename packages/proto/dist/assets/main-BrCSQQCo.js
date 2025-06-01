@@ -1,6 +1,6 @@
-import{i as u,x as s,a as f,n as d,d as g,b as m,H as p}from"./header-CbxHXgdm.js";var x=Object.defineProperty,h=(c,o,t,i)=>{for(var n=void 0,e=c.length-1,l;e>=0;e--)(l=c[e])&&(n=l(o,t,n)||n);return n&&x(o,t,n),n};const r=class r extends u{constructor(){super(...arguments),this.locations=["",""],this.maxLocations=10}handleAddInput(){this.locations.length<this.maxLocations&&(this.locations=[...this.locations,""])}handleRemoveInput(o){this.locations=this.locations.filter((t,i)=>i!==o)}handleInputChange(o,t){const i=o.target.value;this.locations=[...this.locations.slice(0,t),i,...this.locations.slice(t+1)]}render(){return s`
+import{i as u,x as r,a as f,n as d,d as g,b as m}from"./state-D9QQRvWg.js";import{H as p}from"./header-BQW9jjF4.js";var x=Object.defineProperty,h=(c,o,t,i)=>{for(var n=void 0,e=c.length-1,l;e>=0;e--)(l=c[e])&&(n=l(o,t,n)||n);return n&&x(o,t,n),n};const s=class s extends u{constructor(){super(...arguments),this.locations=["",""],this.maxLocations=10}handleAddInput(){this.locations.length<this.maxLocations&&(this.locations=[...this.locations,""])}handleRemoveInput(o){this.locations=this.locations.filter((t,i)=>i!==o)}handleInputChange(o,t){const i=o.target.value;this.locations=[...this.locations.slice(0,t),i,...this.locations.slice(t+1)]}render(){return r`
       <div class="locations-container">
-        ${this.locations.map((o,t)=>s`
+        ${this.locations.map((o,t)=>r`
             <div class="input-container">
               <span class="location-number">${t}.</span>
               <input
@@ -18,13 +18,13 @@ import{i as u,x as s,a as f,n as d,d as g,b as m,H as p}from"./header-CbxHXgdm.j
                 />
             </div>
           `)}
-        ${this.locations.length<this.maxLocations?s`
+        ${this.locations.length<this.maxLocations?r`
           <div class="button-container">
             <button class="add-location" @click="${this.handleAddInput}">Add Location</button>
           `:""}
           </div>
       </div>
-    `}};r.styles=f`
+    `}};s.styles=f`
   .locations-container {
       padding: 5px;
       max-height: 250px; /* Adjust this value as needed */
@@ -101,4 +101,4 @@ import{i as u,x as s,a as f,n as d,d as g,b as m,H as p}from"./header-CbxHXgdm.j
     background-color: #cccccc;
     cursor: not-allowed;
   }
-`;let a=r;h([d({type:Array})],a.prototype,"locations");h([d({type:Number})],a.prototype,"maxLocations");g({"scenicroute-header":p,"mu-auth":m.Provider,"location-input":a});p.initializeOnce();
+`;let a=s;h([d({type:Array})],a.prototype,"locations");h([d({type:Number})],a.prototype,"maxLocations");g({"scenicroute-header":p,"mu-auth":m.Provider,"location-input":a});p.initializeOnce();

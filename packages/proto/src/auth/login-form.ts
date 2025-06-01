@@ -1,4 +1,3 @@
-// in proto/src/auth/login-form.ts
 import { html, css, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
 import reset from "../styles/reset.css.js";
@@ -27,6 +26,36 @@ export class LoginFormElement extends LitElement {
             this.formData.password);
     }
 
+    override render() {
+        return html`
+      <form
+        @change=${(e: InputEvent) => this.handleChange(e)}
+        @submit=${(e: SubmitEvent) => this.handleSubmit(e)}
+      >
+        <slot></slot>
+        <slot name="button">
+          <button
+            ?disabled=${!this.canSubmit}
+            type="submit">
+            <slot name="button-label">Login</slot>
+          </button>
+        </slot>
+        <p class="error">${this.error}</p>
+      </form>
+    `;
+    }
+
+    static styles = [
+        reset.styles,
+        css`
+    .error:not(:empty) {
+      color: var(--color-error);
+      border: 1px solid var(--color-error);
+      padding: var(--size-spacing-medium);
+    }
+  `];
+
+
     handleChange(event: InputEvent) {
         const target = event.target as HTMLInputElement;
         const name = target?.name;
@@ -47,8 +76,7 @@ export class LoginFormElement extends LitElement {
         submitEvent.preventDefault();
 
         if (this.canSubmit) {
-            fetch(
-                this?.api || "",
+            fetch(this?.api || "",
                 {
                     method: "POST",
                     headers: {
@@ -58,7 +86,7 @@ export class LoginFormElement extends LitElement {
                 }
             )
                 .then((res) => {
-                    if (res.status !== 200)
+                    if (res.status !== 200 && res.status !== 201)
                         throw "Login failed";
                     else return res.json();
                 })
@@ -82,35 +110,4 @@ export class LoginFormElement extends LitElement {
                 });
         }
     }
-    
-    override render() {
-        return html`
-      <form
-        @change=${(e: InputEvent) => this.handleChange(e)}
-        @submit=${(e: SubmitEvent) => this.handleSubmit(e)}
-      >
-        <slot></slot>
-        <slot name="button">
-          <button
-            ?disabled=${!this.canSubmit}
-            type="submit">
-            Login
-          </button>
-        </slot>
-        <p class="error">${this.error}</p>
-      </form>
-    `;
-    }
-
-    static styles = [
-        reset.styles,
-        css`
-      .error:not(:empty) {
-        color: var(--color-error);
-        border: 1px solid var(--color-error);
-        padding: var(--size-spacing-medium);
-      }
-  `];
-
-    // more to come...
 }

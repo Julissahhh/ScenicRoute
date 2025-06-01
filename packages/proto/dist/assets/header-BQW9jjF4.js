@@ -1,97 +1,14 @@
-import { Events } from "@calpoly/mustang";
-import { css, html, LitElement } from "lit";
-import reset from "../styles/reset.css.ts";
-import { property, state } from "lit/decorators.js";
-import { Auth, Observer } from "@calpoly/mustang";
-
-function toggleDarkMode(ev: InputEvent) {
-  const target = ev.target as HTMLInputElement;
-  const checked = target.checked;
-  localStorage.setItem('darkMode', checked.toString());
-  Events.relay(ev, "dark-mode", { checked });
-}
-
-export class HeaderElement extends LitElement {
-  @property({ type: String }) title = 'Scenic Route...';
-  @property({ type: String }) subtitle = 'Find must-see locations on the way to your desired destination';
-  @property({ type: Boolean }) darkMode = false;
-  @state() private menuOpen = false;
-
-  _authObserver = new Observer<Auth.Model>(this, "scenic:auth");
-
-  @state()
-  loggedIn = false;
-
-  @state()
-  userid?: string;
-
-  connectedCallback() {
-    super.connectedCallback();
-
-    this._authObserver.observe((auth: Auth.Model) => {
-      const { user } = auth;
-
-      if (user && user.authenticated) {
-        this.loggedIn = true;
-        this.userid = user.username;
-      } else {
-        this.loggedIn = false;
-        this.userid = undefined;
-      }
-    });
-  }
-
-  private toggleMenu(e: Event) {
-    e.stopPropagation(); // Prevent immediate document click handler
-    this.menuOpen = !this.menuOpen;
-    this.requestUpdate();
-  }
-
-  private closeMenu() {
-    this.menuOpen = false;
-    this.requestUpdate();
-  }
-
-  firstUpdated() {
-    const savedMode = localStorage.getItem('darkMode') === 'true';
-    if (savedMode) {
-      this.darkMode = true;
-      this.shadowRoot?.querySelector('#dark-mode-toggle')?.setAttribute('checked', '');
-      document.body.classList.add('dark-mode');
-    }
-
-    // Close menu when clicking outside
-    document.addEventListener('click', () => {
-      if (this.menuOpen) {
-        this.closeMenu();
-      }
-    });
-  }
-
-  renderSignOutButton() {
-    return html`
+import{i as h,O as m,e as u,x as d,c as f,a as k,n as l,r as c}from"./state-D9QQRvWg.js";var v=Object.defineProperty,r=(a,t,e,i)=>{for(var o=void 0,s=a.length-1,g;s>=0;s--)(g=a[s])&&(o=g(t,e,o)||o);return o&&v(t,e,o),o};function y(a){const e=a.target.checked;localStorage.setItem("darkMode",e.toString()),u.relay(a,"dark-mode",{checked:e})}const p=class p extends h{constructor(){super(...arguments),this.title="Scenic Route...",this.subtitle="Find must-see locations on the way to your desired destination",this.darkMode=!1,this.menuOpen=!1,this._authObserver=new m(this,"scenic:auth"),this.loggedIn=!1}connectedCallback(){super.connectedCallback(),this._authObserver.observe(t=>{const{user:e}=t;e&&e.authenticated?(this.loggedIn=!0,this.userid=e.username):(this.loggedIn=!1,this.userid=void 0)})}toggleMenu(t){t.stopPropagation(),this.menuOpen=!this.menuOpen,this.requestUpdate()}closeMenu(){this.menuOpen=!1,this.requestUpdate()}firstUpdated(){var e,i;localStorage.getItem("darkMode")==="true"&&(this.darkMode=!0,(i=(e=this.shadowRoot)==null?void 0:e.querySelector("#dark-mode-toggle"))==null||i.setAttribute("checked",""),document.body.classList.add("dark-mode")),document.addEventListener("click",()=>{this.menuOpen&&this.closeMenu()})}renderSignOutButton(){return d`
     <button
-      @click=${(e: UIEvent) => {
-        Events.relay(e, "auth:message", ["auth/signout"]);
-        this.closeMenu(); // Optionally close the dropdown
-      }}
+      @click=${t=>{u.relay(t,"auth:message",["auth/signout"]),this.closeMenu()}}
     >
       Sign Out
     </button>
-  `;
-  }
-
-  renderSignInButton() {
-    return html`
+  `}renderSignInButton(){return d`
     <a href="login.html" @click=${this.closeMenu}>
       Sign In
     </a>
-  `;
-  }
-
-
-  override render() {
-    return html`
+  `}render(){return d`
       <header>
         <div class="header-text">
           <a href="index.html">
@@ -102,22 +19,19 @@ export class HeaderElement extends LitElement {
         <div class="right-section">
           <nav class="page-links">
             <a href="roadtripideas.html">RoadTrip Ideas</a>
-            <div class="menu-container" @click=${(e: Event) => e.stopPropagation()}>
+            <div class="menu-container" @click=${t=>t.stopPropagation()}>
         <img 
           src="/icons/menu-icon.svg" 
           alt="menu icon" 
           class="icon-right" 
           @click=${this.toggleMenu}
         />
-        <div class="dropdown-menu ${this.menuOpen ? 'open' : ''}">
+        <div class="dropdown-menu ${this.menuOpen?"open":""}">
         <a slot="actuator">
-          Hello, ${this.userid || "traveler"}
+          Hello, ${this.userid||"traveler"}
         </a>
           <a href="person.html" @click=${this.closeMenu}>Planned Trips</a>
-          ${this.loggedIn
-        ? this.renderSignOutButton()
-        : this.renderSignInButton()
-      }
+          ${this.loggedIn?this.renderSignOutButton():this.renderSignInButton()}
           <div class="dropdown-dark-mode">
             <label>
               <input 
@@ -125,7 +39,7 @@ export class HeaderElement extends LitElement {
                 id="dropdown-dark-mode-toggle" 
                 autocomplete="off" 
                 ?checked=${this.darkMode} 
-                @change=${toggleDarkMode}
+                @change=${y}
               />
               Dark mode
             </label>
@@ -135,12 +49,7 @@ export class HeaderElement extends LitElement {
           </nav>
         </div>
       </header>
-    `;
-  }
-
-  static styles = [
-    reset.styles,
-    css`
+    `}static initializeOnce(){function t(e,i){e.classList.toggle("dark-mode",i)}document.body.addEventListener("dark-mode",e=>{var o;const i=e;t(document.body,(o=i.detail)==null?void 0:o.checked)})}};p.styles=[f.styles,k`
       :host {
         display: block;
         width: 100%;
@@ -289,19 +198,4 @@ export class HeaderElement extends LitElement {
         color: white;
         cursor: pointer;
       }
-    `
-  ];
-
-  static initializeOnce() {
-    function toggleDarkMode(page: HTMLElement, checked: boolean) {
-      page.classList.toggle("dark-mode", checked);
-    }
-
-    document.body.addEventListener("dark-mode", (event) => {
-      const customEvent = event as CustomEvent;
-      toggleDarkMode(document.body, customEvent.detail?.checked);
-    });
-  }
-}
-
-customElements.define('scenicroute-header', HeaderElement);
+    `];let n=p;r([l({type:String})],n.prototype,"title");r([l({type:String})],n.prototype,"subtitle");r([l({type:Boolean})],n.prototype,"darkMode");r([c()],n.prototype,"menuOpen");r([c()],n.prototype,"loggedIn");r([c()],n.prototype,"userid");customElements.define("scenicroute-header",n);export{n as H};
