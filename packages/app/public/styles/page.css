@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--color-background-page);
+  line-height: 1.5;
+}
+img {
+  max-width: 100%;
+}
+.page > header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: var(--size-spacing-medium);
+  background-color: var(--color-background-header);
+  color: var(--color-text-inverted);
+
+  a {
+    color: var(--color-link-inverted);
+  }
+
+  h1 {
+    line-height: var(--font-line-height-logotype);
+  }
+}
+
+main {
+  position: relative;
+  z-index: 1; /* Ensures that it stays below the header */
+}
+
+.grid {
+  --page-grids: 8;
+  --page-grid-gap: var(--size-spacing-medium);
+
+  display: grid;
+  grid-template-columns: [start]
+    repeat(var(--page-grids), 1fr) [end];
+  grid-auto-flow: dense;
+  padding: 0 calc(0.5 * var(--page-grid-gap));
+  gap: var(--page-grid-gap);
+  align-items: baseline;
+
+  > header {
+    grid-column: start / end;
+  }
+
+  > main {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: start / end;
+
+    > h2 {
+      grid-column: start / end;
+    }
+  }
+
+  > section {
+    grid-column-end: span 2;
+  }
+}
+
+main > .AboutTrip {
+  grid-column: start / end;
+}
+
+main > .itinerary {
+  grid-column: 1 / -1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dt,
+summary {
+  font-family: var(--font-family-display);
+  line-height: var(--font-line-height-display);
+}
+
+h1 {
+  font-size: var(--size-type-xxlarge);
+  font-style: oblique;
+  line-height: 1;
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-poetsen);
+}
+
+h2 {
+  font-size: var(--size-type-xlarge);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-dangrek);
+}
+
+h3 {
+  font-size: var(--size-type-large);
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-dangrek);
+}
+
+h4 {
+  font-size: var(--size-type-mlarge);
+  font-weight: var(--font-weight-bold);
+}
+
+h5 {
+  font-size: var(--size-type-body);
+  font-weight: var(--font-weight-bold);
+}
+
+h6 {
+  font-size: var(--size-type-body);
+  font-weight: var(--font-weight-normal);
+  font-style: italic;
+}
+
+dt {
+  font-weight: var(--size-type-body);
+}
+
+h3,
+a {
+  color: var(--color-accent);
+}
+
+.input {
+  border-radius: 15px;
+}
+
+svg.icon {
+  /* --size-icon: var(--size-icon-normal); */
+
+  display: inline;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.icon-left {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+
+.icon {
+  width: 2em;
+  height: 2em;
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+
+/* Responsive Page Grid */
+
+.AboutTrip {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white; /* Optional: so text stands out better */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Optional for readability */
+}
+.AboutTrip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/RoadTrip.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5; /* <-- This ONLY affects the image */
+  z-index: 0;
+}
+
+.AboutTrip > * {
+  position: relative;
+  z-index: 1;
+}
+
+.overlay-box {
+  position: absolute;
+  top: 10%; /* Adjust position for the first box */
+  right: 10%;
+  padding: 20px;
+  max-width: 500px; /* Control the box size */
+  z-index: 1; /* Make sure it's above the image */
+  
+}
+
+.box-left {
+  position: absolute;
+  top: 25%; /* Same position as the first box */
+  left: 10%; /* Align it to the left */
+  padding: 20px;
+  max-width: 500px; /* Control the box size */
+  max-height: 350px;
+  z-index: 1; /* Make sure it's above the image */
+  background-color: rgba(237, 115, 0); /* Orange background */
+  border-radius: 8px;
+  font-family: var(--font-family-lexend);
+  font-weight: var(--font-weight-bold);
+  color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.overlay-box:nth-child(2) {
+  top: 25%; /* Adjust position for the second box */
+  right: 10%;
+  background-color: rgba(237, 115, 0); /* Maintain same background */
+  width: 500px;
+  height: 350px;
+  border-radius: 8px;
+  font-family: var(--font-family-lexend);
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+}
+
+.overlay-box h2 {
+  color: #FFFF; /* New color for the text */
+  font-family: var(--font-family-poetsen);
+}
+
+body.dark-mode {
+  --color-background-page: rgb(217, 154, 95);
+  --color-text: rgb(240, 240, 223);
+  --color-background-card: black;
+  --color-accent: rgba(173, 84, 0);
+  --color-background-header: var(--color-accent);
+  --color-text-control: rgb(51 51 51);
+  --color-text-control-inverted: var(--color-background-page);
+}
+
+body.dark-mode .overlay-box {
+  background-color: rgba(173, 84, 0); /* Dark mode background */
+}
+
+body.dark-mode .box-left {
+  background-color: rgba(173, 84, 0); /* Dark mode background */
+}
