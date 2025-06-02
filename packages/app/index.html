@@ -19,12 +19,14 @@
 <body class="page">
     <mu-history provides="scenic:history">
         <mu-auth provides="scenic:auth" redirect="/login.html">
+            <mu-store provides="scenic:model">
                 <scenicroute-header title="Scenic Route..."
                     subtitle="Find must-see locations on the way to your desired destination">
                 </scenicroute-header>
                 <article class="grid">
                     <mu-switch></mu-switch>
                 </article>
+            </mu-store>
         </mu-auth>
 </body>
 </html>
