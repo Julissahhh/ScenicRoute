@@ -1,4 +1,4 @@
-import{i as p,x as m,c as d,b,r as l,n as u}from"./reset.css-_Dg8cSUK.js";var f=Object.defineProperty,i=(h,s,t,o)=>{for(var e=void 0,r=h.length-1,c;r>=0;r--)(c=h[r])&&(e=c(s,t,e)||e);return e&&f(s,t,e),e};const n=class n extends p{constructor(){super(...arguments),this.formData={},this.redirect="/"}get canSubmit(){return!!(this.api&&this.formData.username&&this.formData.password)}render(){return m`
+import{i as p,x as m,c as d,b,r as l,n as u}from"./reset.css-Cj0nzefX.js";var f=Object.defineProperty,i=(h,s,t,o)=>{for(var e=void 0,r=h.length-1,c;r>=0;r--)(c=h[r])&&(e=c(s,t,e)||e);return e&&f(s,t,e),e};const n=class n extends p{constructor(){super(...arguments),this.formData={},this.redirect="/"}get canSubmit(){return!!(this.api&&this.formData.username&&this.formData.password)}render(){return m`
       <form
         @change=${s=>this.handleChange(s)}
         @submit=${s=>this.handleSubmit(s)}

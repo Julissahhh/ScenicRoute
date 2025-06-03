@@ -15,9 +15,16 @@ import { LocationInputElement } from "./components/locationinput.ts";
 import { LocationCardElement } from "./components/locationcard.ts";
 import { HomeViewElement } from "./views/home-view";
 import { PopularViewElement } from "./views/popularlocations-view.ts";
+import { DestinationCreateElement } from "./views/destination-create";
+
 
 
 const routes = [
+    {
+        path: "/app/destination/new",
+        view: () => html`<destination-create></destination-create>`
+    },
+
     {
         path: "/app/popularlocations",
         view: () => html`
@@ -55,5 +62,9 @@ define({
     "location-card": LocationCardElement,
     "home-view": HomeViewElement,
     "popularlocations-view": PopularViewElement,
+    "destination-create": DestinationCreateElement,
+
 });
+
+HeaderElement.initializeOnce();
 

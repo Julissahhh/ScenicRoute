@@ -84,7 +84,7 @@ export class HeaderElement extends LitElement {
 
   renderSignInButton() {
     return html`
-    <a href="login.html" @click=${this.closeMenu}>
+    <a href="/login.html" @click=${this.closeMenu}>
       Sign In
     </a>
   `;
@@ -114,7 +114,7 @@ export class HeaderElement extends LitElement {
         <a slot="actuator">
           Hello, ${this.userid || "traveler"}
         </a>
-          <a href="person.html" @click=${this.closeMenu}>Planned Trips</a>
+          <a " @click=${this.closeMenu}>Planned Trips</a>
           ${this.loggedIn
         ? this.renderSignOutButton()
         : this.renderSignInButton()
