@@ -24,14 +24,15 @@ module.exports = __toCommonJS(destination_svc_exports);
 var import_mongoose = require("mongoose");
 const DestinationSchema = new import_mongoose.Schema(
   {
-    _id: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
     state: { type: String, required: true, trim: true },
     category: { type: String, required: true, trim: true },
     address: { type: String, required: true, trim: true },
-    imageURL: { type: String, required: true, trim: true }
+    imageURL: { type: String, required: false, trim: true, default: "Default_Trip.jpg" }
+    // Made optional with default
   },
   { collection: "popular_locations" }
+  // Added autoIndexId
 );
 const DestinationModel = (0, import_mongoose.model)(
   "Destination",

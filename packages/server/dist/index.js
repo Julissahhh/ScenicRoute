@@ -26,6 +26,8 @@ var import_mongo = require("./services/mongo");
 var import_destination_svc = __toESM(require("./services/destination-svc"));
 var import_destinations = __toESM(require("./routes/destinations"));
 var import_auth = __toESM(require("./routes/auth"));
+var import_promises = __toESM(require("node:fs/promises"));
+var import_path = __toESM(require("path"));
 (0, import_mongo.connect)("scenic");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
@@ -44,6 +46,12 @@ app.get("/destinations", async (req, res) => {
 });
 app.get("/hello", (req, res) => {
   res.send("Hello, World");
+});
+app.use("/app", (req, res) => {
+  const indexHtml = import_path.default.resolve(staticDir, "index.html");
+  import_promises.default.readFile(indexHtml, { encoding: "utf8" }).then(
+    (html) => res.send(html)
+  );
 });
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

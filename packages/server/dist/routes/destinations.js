@@ -42,10 +42,15 @@ router.get("/:locationid", (req, res) => {
   import_destination_svc.default.get(userid).then((destination) => res.json(destination)).catch((err) => res.status(404).send(err));
 });
 router.post("/", (req, res) => {
+  console.log("Received POST with body:", req.body);
   const newDestination = req.body;
-  import_destination_svc.default.create(newDestination).then(
-    (destination) => res.status(201).json(destination)
-  ).catch((err) => res.status(500).send(err));
+  import_destination_svc.default.create(newDestination).then((destination) => {
+    console.log("Successfully created:", destination);
+    res.status(201).json(destination);
+  }).catch((err) => {
+    console.error("Error creating destination:", err);
+    res.status(500).send(err);
+  });
 });
 router.put("/:userid", (req, res) => {
   const { userid } = req.params;

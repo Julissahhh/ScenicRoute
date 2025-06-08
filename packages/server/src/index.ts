@@ -4,6 +4,8 @@ import { connect } from "./services/mongo";
 import Destinations from "./services/destination-svc"; 
 import destinations from "./routes/destinations";
 import auth, { authenticateUser } from "./routes/auth";
+import fs from "node:fs/promises";
+import path from "path";
 
 
 connect("scenic");
@@ -28,6 +30,13 @@ app.get("/destinations", async (req: Request, res: Response) => {
 
 app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello, World");
+});
+
+app.use("/app", (req: Request, res: Response) => {
+  const indexHtml = path.resolve(staticDir, "index.html");
+  fs.readFile(indexHtml, { encoding: "utf8" }).then((html) =>
+    res.send(html)
+  );
 });
 
 app.listen(port, () => {

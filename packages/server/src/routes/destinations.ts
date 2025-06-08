@@ -1,6 +1,7 @@
 // src/routes/destinations.ts
 import express, { Request, Response } from "express";
 import { Destination } from "../models/destination";
+
 import Destinations from "../services/destination-svc";
 
 const router = express.Router();
@@ -20,14 +21,19 @@ router.get("/", (_, res: Response) => {
   });
 
   router.post("/", (req: Request, res: Response) => {
-    const newDestination = req.body;
-  
-    Destinations.create(newDestination)
-      .then((destination: Destination) =>
-        res.status(201).json(destination)
-      )
-      .catch((err) => res.status(500).send(err));
-  });
+  console.log("Received POST with body:", req.body); // Add this line
+  const newDestination = req.body;
+
+  Destinations.create(newDestination)
+    .then((destination: Destination) => {
+      console.log("Successfully created:", destination); // Add this line
+      res.status(201).json(destination);
+    })
+    .catch((err) => {
+      console.error("Error creating destination:", err); // Add this line
+      res.status(500).send(err);
+    });
+});
 
   router.put("/:userid", (req: Request, res: Response) => {
     const { userid } = req.params;
@@ -45,5 +51,7 @@ router.get("/", (_, res: Response) => {
       .then(() => res.status(204).end())
       .catch((err) => res.status(404).send(err));
   });
+
+  
 
   export default router;

@@ -4,15 +4,15 @@ import { Destination } from "../models/destination";
 
 const DestinationSchema = new Schema<Destination>(
   {
-    _id: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
     state: { type: String, required: true, trim: true },
     category: { type: String, required: true, trim: true },
     address: { type: String, required: true, trim: true },
-    imageURL: { type: String, required: true, trim: true },  
+    imageURL: { type: String, required: false, trim: true, default: "Default_Trip.jpg" }, // Made optional with default
   },
-  { collection: "popular_locations" }
+  { collection: "popular_locations"} // Added autoIndexId
 );
+
 
 const DestinationModel = model<Destination>(
   "Destination",
